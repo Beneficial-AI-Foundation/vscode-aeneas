@@ -81,7 +81,7 @@ export function generateSpecFileContent(
   lines.push('');
   lines.push(`/-! # Spec theorem for \`${rustDisplayName(entry.rustName)}\``);
   lines.push('');
-  lines.push(`Source: ${entry.source}`);
+  lines.push(`Source: ${entry.source}, line ${entry.startLine}`);
   lines.push('-/');
 
   // Open declarations and namespace
