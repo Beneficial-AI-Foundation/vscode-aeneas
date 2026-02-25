@@ -6,12 +6,12 @@
   "license": "Apache-2.0",
   "author": {
     "name": "Oliver Butterley",
-    "url": "https://github.com/AeneasVerif/vscode-aeneas"
+    "url": "https://github.com/Beneficial-AI-Foundation/vscode-aeneas"
   },
   "publisher": "baif",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AeneasVerif/vscode-aeneas"
+    "url": "https://github.com/Beneficial-AI-Foundation/vscode-aeneas"
   },
   "engines": {
     "vscode": "^1.75.0"

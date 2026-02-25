@@ -21,7 +21,7 @@ Download the `.vsix` from the latest [CI build](../../actions) artifacts, then i
 Alternatively, build from source:
 
 ```bash
-git clone https://github.com/AeneasVerif/vscode-aeneas.git
+git clone https://github.com/Beneficial-AI-Foundation/vscode-aeneas.git
 npm install
 npm run compile
 npm run package
