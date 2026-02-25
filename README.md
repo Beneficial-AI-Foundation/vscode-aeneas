@@ -56,16 +56,13 @@ The extension reads a JSON file with the following structure:
       "specified": true,                   // has a Lean spec theorem
       "verified": true,                    // spec theorem is proven
       "spec_statement": "theorem ...",     // Lean theorem text (or null)
-      "spec_docstring": "/-- ... -/",      // human-readable description (or null)
-      "spec_file": "Specs/Module/Add.lean", // path to Lean spec file (or null)
-      "is_hidden": false,                  // skip this entry
-      "is_extraction_artifact": false      // skip this entry
+      "spec_file": "Specs/Module/Add.lean" // path to Lean spec file (or null)
     }
   ]
 }
 ```
 
-## Future features
+## Future feature wishlist
 
 - Warning when Rust source has been modified since the last Aeneas extraction (stale verification)
 - Auto-refresh when verification status is updated (watch for Lean build changes)

@@ -57,11 +57,3 @@ export function updateDecorations(
   editor.setDecorations(types.extracted, extractedRanges);
 }
 
-export function clearDecorations(
-  editor: vscode.TextEditor,
-  types: DecorationTypes
-): void {
-  editor.setDecorations(types.verified, []);
-  editor.setDecorations(types.specified, []);
-  editor.setDecorations(types.extracted, []);
-}

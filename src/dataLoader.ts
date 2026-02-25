@@ -134,7 +134,10 @@ export function findEntriesForFile(
 
   // Suffix match: the JSON might use a different prefix than the workspace root
   for (const [source, entries] of fileIndex) {
-    if (normalized.endsWith(source) || source.endsWith(normalized)) {
+    if (
+      (normalized.endsWith(source) && (normalized.length === source.length || normalized[normalized.length - source.length - 1] === '/')) ||
+      (source.endsWith(normalized) && (source.length === normalized.length || source[source.length - normalized.length - 1] === '/'))
+    ) {
       return entries;
     }
   }
@@ -142,9 +145,3 @@ export function findEntriesForFile(
   return [];
 }
 
-/**
- * Find the specific entry whose line range contains the given line (1-indexed).
- */
-export function findEntryAtLine(entries: FunctionEntry[], line: number): FunctionEntry | undefined {
-  return entries.find(e => line >= e.startLine && line <= e.endLine);
-}
