@@ -4,4 +4,7 @@ tsconfig.json
 .gitignore
 .vscodeignore
 .github/
-images/
+images/verified.png
+images/specified.png
+images/extracted.png
+images/screenshot.png

@@ -34,7 +34,7 @@ Then install the generated `aeneas-verify-*.vsix` via "Extensions: Install from 
 | Setting | Default | Description |
 |---------|---------|-------------|
 | `aeneas-verify.jsonPath` | `"functions.json"` | Path to verification status JSON (relative to workspace root) |
-| `aeneas-verify.showExtractedOnly` | `true` | Show grey dot for extracted-but-unspecified functions |
+| `aeneas-verify.showExtracted` | `true` | Show grey dot for extracted-but-unspecified functions |
 
 ## Commands
 

@@ -8,7 +8,7 @@
     "name": "Oliver Butterley",
     "url": "https://github.com/AeneasVerif/vscode-aeneas"
   },
-  "publisher": "aeneas-verify",
+  "publisher": "baif",
   "repository": {
     "type": "git",
     "url": "https://github.com/AeneasVerif/vscode-aeneas"
@@ -16,6 +16,7 @@
   "engines": {
     "vscode": "^1.75.0"
   },
+  "icon": "images/icon.png",
   "categories": ["Visualization"],
   "activationEvents": [
     "onLanguage:rust",
@@ -31,7 +32,7 @@
           "default": "functions.json",
           "description": "Path to the verification status JSON file (relative to workspace root)"
         },
-        "aeneas-verify.showExtractedOnly": {
+        "aeneas-verify.showExtracted": {
           "type": "boolean",
           "default": true,
           "description": "Show a grey dot for functions that are extracted but have no spec"
@@ -52,7 +53,7 @@
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "package": "vsce package --allow-missing-repository"
+    "package": "vsce package"
   },
   "devDependencies": {
     "@types/vscode": "^1.75.0",

@@ -117,7 +117,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     const showExtracted = vscode.workspace
       .getConfiguration('aeneas-verify')
-      .get<boolean>('showExtractedOnly', true);
+      .get<boolean>('showExtracted', true);
 
     const entries = findEntriesForFile(fileIndex, editor.document.uri, wsRoot);
     updateDecorations(editor, entries, decorationTypes, showExtracted);
