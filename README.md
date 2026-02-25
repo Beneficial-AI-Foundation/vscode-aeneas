@@ -12,7 +12,7 @@ VSCode extension that shows the formal verification status of Rust functions ext
 | ![specified](images/specified.png) | **Specified** — spec theorem written but not yet proven |
 | ![extracted](images/extracted.png) | **Extracted** — function extracted by Aeneas, no spec yet |
 
-Hovering on the first line of a verified or specified function displays the Lean spec statement, with a link to open the spec file.
+Hovering on the first line of a verified or specified function displays the Lean spec statement, with a link to open the spec file. Hovering on an extracted function offers a one-click option to create a skeleton Lean spec file.
 
 ## Install
 
@@ -35,11 +35,18 @@ Then install the generated `aeneas-verify-*.vsix` via "Extensions: Install from 
 |---------|---------|-------------|
 | `aeneas-verify.jsonPath` | `"functions.json"` | Path to verification status JSON (relative to workspace root) |
 | `aeneas-verify.showExtracted` | `true` | Show grey dot for extracted-but-unspecified functions |
+| `aeneas-verify.specsBasePath` | `"Specs"` | Base path for generated spec files (relative to workspace root) |
+| `aeneas-verify.copyrightHolder` | `""` | Copyright holder for spec file headers (leave empty to omit) |
+| `aeneas-verify.licenseType` | `"Apache 2.0"` | License type for spec file headers |
+| `aeneas-verify.defaultAuthors` | `""` | Default authors line for spec file headers |
+| `aeneas-verify.defaultImports` | `[]` | Additional Lean imports (auto-prefixed with crate name) |
+| `aeneas-verify.openDeclarations` | `"Aeneas Aeneas.Std Result Aeneas.Std.WP"` | Lean `open` declarations for generated files |
 
 ## Commands
 
 - **Aeneas Verify: Reload Verification Data** — re-read `functions.json` without reloading the window
 - **Aeneas Verify: Open Lean Spec File** — available from the hover tooltip
+- **Aeneas Verify: Create Lean Spec File** — create a skeleton spec file for an extracted function
 
 ## JSON schema
 
@@ -66,4 +73,4 @@ The extension reads a JSON file with the following structure:
 
 - Warning when Rust source has been modified since the last Aeneas extraction (stale verification)
 - Auto-refresh when verification status is updated (watch for Lean build changes)
-- One-click creation of a skeleton Lean spec file for extracted functions that have no spec yet
+- Auto-extract function parameters from the Lean definition for generated spec files

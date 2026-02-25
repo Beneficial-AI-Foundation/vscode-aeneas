@@ -17,7 +17,9 @@
     "vscode": "^1.75.0"
   },
   "icon": "images/icon.png",
-  "categories": ["Visualization"],
+  "categories": [
+    "Visualization"
+  ],
   "activationEvents": [
     "onLanguage:rust",
     "workspaceContains:**/*.rs"
@@ -36,6 +38,39 @@
           "type": "boolean",
           "default": true,
           "description": "Show a grey dot for functions that are extracted but have no spec"
+        },
+        "aeneas-verify.specsBasePath": {
+          "type": "string",
+          "default": "Specs",
+          "description": "Base path for generated spec files (relative to workspace root)"
+        },
+        "aeneas-verify.copyrightHolder": {
+          "type": "string",
+          "default": "",
+          "description": "Copyright holder for generated spec file headers (e.g., 'Beneficial AI Foundation'). Leave empty to omit the copyright block."
+        },
+        "aeneas-verify.licenseType": {
+          "type": "string",
+          "default": "Apache 2.0",
+          "description": "License type for generated spec file headers"
+        },
+        "aeneas-verify.defaultAuthors": {
+          "type": "string",
+          "default": "",
+          "description": "Default authors line for generated spec file headers"
+        },
+        "aeneas-verify.defaultImports": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Additional Lean import entries for generated spec files (e.g., ['Math.Basic']). Each is prefixed with the crate name. 'Aeneas' and '{Crate}.Funs' are always included."
+        },
+        "aeneas-verify.openDeclarations": {
+          "type": "string",
+          "default": "Aeneas Aeneas.Std Result Aeneas.Std.WP",
+          "description": "Lean open declarations used in generated spec files"
         }
       }
     },
@@ -47,18 +82,28 @@
       {
         "command": "aeneas-verify.reload",
         "title": "Aeneas Verify: Reload Verification Data"
+      },
+      {
+        "command": "aeneas-verify.createSpecFile",
+        "title": "Aeneas Verify: Create Lean Spec File"
       }
     ]
   },
   "scripts": {
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "package": "vsce package"
+    "compile": "node esbuild.mjs",
+    "compile:production": "node esbuild.mjs --production",
+    "watch": "node esbuild.mjs --watch",
+    "typecheck": "tsc -p ./ --noEmit",
+    "package": "npm run compile:production && vsce package"
   },
   "devDependencies": {
-    "@types/vscode": "^1.75.0",
     "@types/node": "^18.0.0",
-    "typescript": "^5.0.0",
-    "@vscode/vsce": "^3.0.0"
+    "@types/vscode": "^1.75.0",
+    "@vscode/vsce": "^3.0.0",
+    "esbuild": "^0.27.3",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "change-case": "^5.4.4"
   }
 }

@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
-import { loadFunctions, findEntriesForFile, FileIndex } from './dataLoader';
+import { loadFunctions, findEntriesForFile, FileIndex, FunctionEntry } from './dataLoader';
+import { createSpecFile } from './specFileCreator';
 import { createDecorationTypes, updateDecorations, DecorationTypes } from './decorationProvider';
 import { SpecHoverProvider } from './hoverProvider';
 
@@ -43,6 +44,14 @@ export function activate(context: vscode.ExtensionContext) {
       const absPath = path.join(workspaceRoot, specFile);
       const uri = vscode.Uri.file(absPath);
       vscode.window.showTextDocument(uri);
+    })
+  );
+
+  // Register command: create spec file
+  context.subscriptions.push(
+    vscode.commands.registerCommand('aeneas-verify.createSpecFile', (entry: FunctionEntry | string) => {
+      const parsed: FunctionEntry = typeof entry === 'string' ? JSON.parse(entry) : entry;
+      createSpecFile(parsed, workspaceRoot);
     })
   );
 
